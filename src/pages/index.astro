@@ -1,7 +1,8 @@
 ---
 import business from '../content/business.json'
 import menu from '../content/menu.json'
-import { siteConfig, galleryImages, navLinks, weeklySpecials } from '../data/site'
+import gallery from '../content/gallery.json'
+import { siteConfig, navLinks, weeklySpecials } from '../data/site'
 ---
 
 <html lang="en">
@@ -119,7 +120,7 @@ import { siteConfig, galleryImages, navLinks, weeklySpecials } from '../data/sit
         <h2 class="center">Gallery</h2>
       </div>
       <div class="gallery-grid">
-        {galleryImages.map((img) => (
+        {gallery.images.map((img) => (
           <div class:list={['gallery-item', img.size]}>
             <img src={img.src} alt={img.alt} loading="lazy" />
           </div>

@@ -1,0 +1,11 @@
+{
+  "images": [
+    { "src": "/images/ig-9.jpg", "alt": "Steak and chips at Custom Cafe", "size": "tall" },
+    { "src": "/images/ig-3.jpg", "alt": "Full cafe menu board" },
+    { "src": "/images/ig-2.jpg", "alt": "Weekly specials board" },
+    { "src": "/images/ig-4.jpg", "alt": "Mates enjoying breakfast at Custom Cafe", "size": "wide" },
+    { "src": "/images/ig-5.jpg", "alt": "Celebrating 2nd anniversary" },
+    { "src": "/images/ig-7.jpg", "alt": "Breakfast wraps and coffee" },
+    { "src": "/images/ig-8.jpg", "alt": "Custom Cafe outdoor area" }
+  ]
+}
