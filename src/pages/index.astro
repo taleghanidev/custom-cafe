@@ -1,0 +1,347 @@
+---
+import { siteConfig, menuData, galleryImages, navLinks, weeklySpecials } from '../data/site'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={siteConfig.description} />
+    <title>{siteConfig.name} — {siteConfig.tagline}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+
+    <!-- Nav -->
+    <nav>
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">Custom<span>Cafe</span></a>
+        <div class="nav-links">
+          {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+          <a href="#order" class="nav-cta">Order Now</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-image">
+        <img src="/images/ig-4.jpg" alt="Custom Cafe outdoor area with friends" />
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Brookvale's Local Since 2024</div>
+        <h1>Custom Cafe</h1>
+        <p class="hero-tagline">{siteConfig.tagline}</p>
+        <p class="hero-sub">
+          <a href={siteConfig.links.googleMaps} target="_blank" rel="noopener">{siteConfig.address.full}</a>
+          &middot; {siteConfig.hours.short}
+        </p>
+        <div class="hero-actions">
+          <a href="#menu" class="btn-primary">See Menu</a>
+          <a href="#order" class="btn-outline">Order Pickup</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specials -->
+    <section class="specials">
+      <div class="specials-inner">
+        <h3>Weekly Specials</h3>
+        <div class="specials-row">
+          {weeklySpecials.map((s) => (
+            <div class="special-tag">
+              <strong>{s.day}</strong>
+              <span>{s.item} {s.price}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="/images/ig-9.jpg" alt="Steak and chips at Custom Cafe" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">About Us</p>
+          <h2>Good food.<br />No fuss.</h2>
+          {siteConfig.about.paragraphs.map((p) => <p class="body-text">{p}</p>)}
+          <div class="features-row">
+            {siteConfig.features.map((f) => <span class="tag">{f}</span>)}
+          </div>
+          <a href={siteConfig.rating.url} target="_blank" rel="noopener" class="rating-badge">
+            <span class="rating-score">{siteConfig.rating.score}</span>
+            <div>
+              <span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="rating-meta">{siteConfig.rating.reviews} reviews on {siteConfig.rating.source}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" class="menu">
+      <div class="container">
+        <p class="section-label center">Our Menu</p>
+        <h2 class="center">Made fresh. Served fast.</h2>
+        <div class="menu-grid">
+          {menuData.map((cat) => (
+            <div class="menu-cat">
+              <h3>{cat.title}</h3>
+              {cat.items.map((item) => (
+                <div class="menu-item">
+                  <div class="menu-row">
+                    <span class="menu-name">{item.name}</span>
+                    <span class="menu-dots"></span>
+                    <span class="menu-price">{item.price}</span>
+                  </div>
+                  <p class="menu-desc">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+      <div class="container">
+        <p class="section-label center">The Vibe</p>
+        <h2 class="center">Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+        {galleryImages.map((img) => (
+          <div class:list={['gallery-item', img.size]}>
+            <img src={img.src} alt={img.alt} loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Order -->
+    <section id="order" class="order">
+      <div class="container">
+        <p class="section-label center">Hungry?</p>
+        <h2 class="center">Order Now</h2>
+        <div class="order-btns">
+          <a href={siteConfig.links.ubereats} target="_blank" rel="noopener" class="order-btn uber">Uber Eats</a>
+          <a href={siteConfig.links.doordash} target="_blank" rel="noopener" class="order-btn doordash">DoorDash</a>
+          <a href={siteConfig.phoneHref} class="order-btn phone">Call for Pickup</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visit -->
+    <section id="visit" class="visit">
+      <div class="visit-grid">
+        <div class="visit-info">
+          <p class="section-label">Find Us</p>
+          <h2>Come Hang</h2>
+          <div class="visit-detail">
+            <h4>Address</h4>
+            <p><a href={siteConfig.links.googleMaps} target="_blank" rel="noopener">{siteConfig.address.street}<br />{siteConfig.address.suburb}</a></p>
+          </div>
+          <div class="visit-detail">
+            <h4>Hours</h4>
+            <p>{siteConfig.hours.weekdays}: {siteConfig.hours.weekdayTime}<br />{siteConfig.hours.weekends}: {siteConfig.hours.weekendTime}</p>
+          </div>
+          <div class="visit-detail">
+            <h4>Phone</h4>
+            <p><a href={siteConfig.phoneHref}>{siteConfig.phone}</a></p>
+          </div>
+          <div class="visit-detail">
+            <h4>Email</h4>
+            <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+          </div>
+          <div class="visit-detail">
+            <h4>Follow</h4>
+            <div class="socials">
+              <a href={siteConfig.links.instagram} target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href={siteConfig.links.facebook} target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="visit-map">
+          <iframe src={siteConfig.links.mapsEmbed} width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-brand">Custom<span>Cafe</span></span>
+        <span class="footer-copy">&copy; 2026 Custom Cafe Brookvale. All rights reserved.</span>
+      </div>
+    </footer>
+
+    <style>
+      :root {
+        --blue: #3BA3D9;
+        --blue-dark: #2B7DAB;
+        --blue-deep: #1A4F6E;
+        --sky: #E8F4FA;
+        --sky-dark: #D0E8F2;
+        --white: #FFFFFF;
+        --off-white: #F8FAFB;
+        --charcoal: #1C1C1C;
+        --text: #2D2D2D;
+        --text-muted: #6E7681;
+        --font-display: 'Archivo Black', Impact, sans-serif;
+        --font-body: 'Nunito Sans', system-ui, sans-serif;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { font-family: var(--font-body); color: var(--text); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+      img { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+      .center { text-align: center; }
+
+      .section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+      h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 400; line-height: 1.15; color: var(--charcoal); margin-bottom: 1.5rem; text-transform: uppercase; }
+      .body-text { font-size: 0.92rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1rem; font-weight: 300; }
+
+      /* Nav */
+      nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 2px solid var(--blue); }
+      .nav-inner { max-width: 1000px; margin: 0 auto; padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+      .nav-logo { font-family: var(--font-display); font-size: 1.1rem; color: var(--charcoal); text-transform: uppercase; }
+      .nav-logo span { color: var(--blue); }
+      .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+      .nav-links a { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); transition: color 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
+      .nav-links a:hover { color: var(--blue); }
+      .nav-cta { background: var(--blue); color: var(--white) !important; padding: 0.5rem 1.1rem; border-radius: 6px; transition: background 0.3s; }
+      .nav-cta:hover { background: var(--blue-dark); }
+
+      /* Hero */
+      .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+      .hero-image { position: absolute; inset: 0; }
+      .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+      .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28,28,28,0.4) 0%, rgba(28,28,28,0.7) 100%); }
+      .hero-content { position: relative; z-index: 2; animation: fadeIn 1s ease-out; }
+      .hero-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--white); background: var(--blue); padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem; }
+      .hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 9vw, 6rem); color: var(--white); text-transform: uppercase; line-height: 0.95; margin-bottom: 0.5rem; }
+      .hero-tagline { font-size: 0.85rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+      .hero-sub { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+      .hero-sub a { color: rgba(59,163,217,0.9); border-bottom: 1px solid rgba(59,163,217,0.3); }
+      .hero-sub a:hover { border-color: var(--blue); }
+      .hero-actions { display: flex; gap: 1rem; justify-content: center; }
+      .btn-primary { padding: 0.85rem 2rem; background: var(--blue); color: var(--white); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 6px; transition: background 0.3s; }
+      .btn-primary:hover { background: var(--blue-dark); }
+      .btn-outline { padding: 0.85rem 2rem; background: transparent; color: var(--white); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; border: 2px solid rgba(255,255,255,0.3); border-radius: 6px; transition: all 0.3s; }
+      .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+      /* Specials */
+      .specials { padding: 1.25rem 2rem; background: var(--blue); }
+      .specials-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 1.5rem; overflow-x: auto; }
+      .specials h3 { font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; color: var(--white); white-space: nowrap; letter-spacing: 0.1em; }
+      .specials-row { display: flex; gap: 0.75rem; }
+      .special-tag { white-space: nowrap; font-size: 0.72rem; color: var(--blue-deep); background: rgba(255,255,255,0.9); padding: 0.35rem 0.85rem; border-radius: 100px; }
+      .special-tag strong { font-weight: 700; margin-right: 0.35rem; }
+
+      /* About */
+      .about { padding: 6rem 2rem; background: var(--off-white); }
+      .about-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem; align-items: center; }
+      .about-image { border-radius: 8px; overflow: hidden; }
+      .about-image img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+      .features-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.5rem; }
+      .tag { font-size: 0.68rem; font-weight: 600; color: var(--blue-deep); background: var(--sky); padding: 0.4rem 0.9rem; border-radius: 100px; }
+      .rating-badge { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: 1.5rem; padding: 0.65rem 1rem; background: var(--blue); border-radius: 6px; text-decoration: none; transition: background 0.3s; }
+      .rating-badge:hover { background: var(--blue-dark); }
+      .rating-score { font-family: var(--font-display); font-size: 1.3rem; color: var(--white); line-height: 1; }
+      .rating-stars { color: #FFD700; font-size: 0.75rem; letter-spacing: 1px; }
+      .rating-meta { font-size: 0.6rem; color: rgba(255,255,255,0.6); display: block; }
+
+      /* Menu */
+      .menu { padding: 6rem 2rem; background: var(--white); }
+      .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem 3.5rem; margin-top: 2.5rem; }
+      .menu-cat h3 { font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; color: var(--blue); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--sky); letter-spacing: 0.05em; }
+      .menu-item { margin-bottom: 1rem; }
+      .menu-row { display: flex; align-items: baseline; gap: 0.5rem; }
+      .menu-name { font-weight: 600; font-size: 0.88rem; color: var(--text); white-space: nowrap; }
+      .menu-dots { flex: 1; border-bottom: 1px dotted rgba(0,0,0,0.1); min-width: 16px; margin-bottom: 4px; }
+      .menu-price { font-family: var(--font-display); font-size: 0.88rem; color: var(--blue); white-space: nowrap; }
+      .menu-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem; line-height: 1.5; font-weight: 300; }
+
+      /* Gallery */
+      .gallery { padding: 6rem 2rem; background: var(--off-white); }
+      .gallery-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 260px; gap: 0.6rem; }
+      .gallery-item { border-radius: 8px; overflow: hidden; }
+      .gallery-item.tall { grid-row: span 2; }
+      .gallery-item.wide { grid-column: span 2; }
+      .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+      .gallery-item:hover img { transform: scale(1.04); }
+
+      /* Order */
+      .order { padding: 5rem 2rem; background: var(--sky); text-align: center; }
+      .order-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+      .order-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; border-radius: 8px; transition: all 0.3s; }
+      .order-btn.uber { background: #06C167; color: var(--white); }
+      .order-btn.uber:hover { background: #05A656; }
+      .order-btn.doordash { background: #FF3008; color: var(--white); }
+      .order-btn.doordash:hover { background: #E02B07; }
+      .order-btn.phone { background: var(--blue); color: var(--white); }
+      .order-btn.phone:hover { background: var(--blue-dark); }
+
+      /* Visit */
+      .visit { padding: 0; }
+      .visit-grid { display: grid; grid-template-columns: 1fr 1.2fr; min-height: 500px; }
+      .visit-info { padding: 4rem 3rem; background: var(--charcoal); color: var(--white); display: flex; flex-direction: column; justify-content: center; }
+      .visit-info .section-label { color: var(--blue); }
+      .visit-info h2 { color: var(--white); }
+      .visit-detail { margin-bottom: 1.5rem; }
+      .visit-detail h4 { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.35rem; font-weight: 700; }
+      .visit-detail p { font-size: 0.88rem; line-height: 1.6; color: rgba(255,255,255,0.6); font-weight: 300; }
+      .visit-detail a { color: var(--blue); border-bottom: 1px solid rgba(59,163,217,0.3); transition: border-color 0.3s; }
+      .visit-detail a:hover { border-color: var(--blue); }
+      .socials { display: flex; gap: 0.5rem; }
+      .social-link { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; color: var(--blue); transition: color 0.3s; border: none !important; }
+      .social-link:hover { color: var(--white); }
+      .visit-map { background: var(--sky-dark); }
+      .visit-map iframe { display: block; width: 100%; height: 100%; min-height: 400px; }
+
+      /* Footer */
+      footer { background: var(--charcoal); padding: 2rem; border-top: 3px solid var(--blue); }
+      .footer-inner { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+      .footer-brand { font-family: var(--font-display); font-size: 0.85rem; color: var(--white); text-transform: uppercase; }
+      .footer-brand span { color: var(--blue); }
+      .footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.25); }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .about { padding: 4rem 1.5rem; }
+        .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .menu { padding: 4rem 1.5rem; }
+        .menu-grid { grid-template-columns: 1fr; }
+        .gallery { padding: 4rem 1rem; }
+        .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+        .gallery-item.tall { grid-row: span 1; }
+        .gallery-item.wide { grid-column: span 2; }
+        .visit-grid { grid-template-columns: 1fr; }
+        .visit-info { padding: 3rem 1.5rem; }
+        .order-btns { flex-direction: column; align-items: center; }
+        .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+        .hero-actions { flex-direction: column; align-items: center; }
+      }
+      @media (max-width: 480px) {
+        .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
+        .gallery-item.wide { grid-column: span 1; }
+      }
+    </style>
+  </body>
+</html>
