@@ -1,5 +1,7 @@
 ---
-import { siteConfig, menuData, galleryImages, navLinks, weeklySpecials } from '../data/site'
+import business from '../content/business.json'
+import menu from '../content/menu.json'
+import { siteConfig, galleryImages, navLinks, weeklySpecials } from '../data/site'
 ---
 
 <html lang="en">
@@ -7,7 +9,7 @@ import { siteConfig, menuData, galleryImages, navLinks, weeklySpecials } from '.
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={siteConfig.description} />
-    <title>{siteConfig.name} — {siteConfig.tagline}</title>
+    <title>{business.name} — {business.tagline}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -34,7 +36,7 @@ import { siteConfig, menuData, galleryImages, navLinks, weeklySpecials } from '.
       <div class="hero-content">
         <div class="hero-badge">Brookvale's Local Since 2024</div>
         <h1>Custom Cafe</h1>
-        <p class="hero-tagline">{siteConfig.tagline}</p>
+        <p class="hero-tagline">{business.tagline}</p>
         <p class="hero-sub">
           <a href={siteConfig.links.googleMaps} target="_blank" rel="noopener">{siteConfig.address.full}</a>
           &middot; {siteConfig.hours.short}
@@ -70,7 +72,7 @@ import { siteConfig, menuData, galleryImages, navLinks, weeklySpecials } from '.
         <div class="about-text">
           <p class="section-label">About Us</p>
           <h2>Good food.<br />No fuss.</h2>
-          {siteConfig.about.paragraphs.map((p) => <p class="body-text">{p}</p>)}
+          {business.about.paragraphs.map((p) => <p class="body-text">{p}</p>)}
           <div class="features-row">
             {siteConfig.features.map((f) => <span class="tag">{f}</span>)}
           </div>
@@ -91,7 +93,7 @@ import { siteConfig, menuData, galleryImages, navLinks, weeklySpecials } from '.
         <p class="section-label center">Our Menu</p>
         <h2 class="center">Made fresh. Served fast.</h2>
         <div class="menu-grid">
-          {menuData.map((cat) => (
+          {menu.categories.map((cat) => (
             <div class="menu-cat">
               <h3>{cat.title}</h3>
               {cat.items.map((item) => (
@@ -146,19 +148,19 @@ import { siteConfig, menuData, galleryImages, navLinks, weeklySpecials } from '.
           <h2>Come Hang</h2>
           <div class="visit-detail">
             <h4>Address</h4>
-            <p><a href={siteConfig.links.googleMaps} target="_blank" rel="noopener">{siteConfig.address.street}<br />{siteConfig.address.suburb}</a></p>
+            <p><a href={siteConfig.links.googleMaps} target="_blank" rel="noopener">{business.address.street}<br />{business.address.suburb}</a></p>
           </div>
           <div class="visit-detail">
             <h4>Hours</h4>
-            <p>{siteConfig.hours.weekdays}: {siteConfig.hours.weekdayTime}<br />{siteConfig.hours.weekends}: {siteConfig.hours.weekendTime}</p>
+            <p>{business.hours.weekdays}: {business.hours.weekdayTime}<br />{business.hours.weekends}: {business.hours.weekendTime}</p>
           </div>
           <div class="visit-detail">
             <h4>Phone</h4>
-            <p><a href={siteConfig.phoneHref}>{siteConfig.phone}</a></p>
+            <p><a href={siteConfig.phoneHref}>{business.phone}</a></p>
           </div>
           <div class="visit-detail">
             <h4>Email</h4>
-            <p><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+            <p><a href={`mailto:${business.email}`}>{business.email}</a></p>
           </div>
           <div class="visit-detail">
             <h4>Follow</h4>
