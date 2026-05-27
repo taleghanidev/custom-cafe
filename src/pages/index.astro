@@ -2,14 +2,18 @@
 import business from '../content/business.json'
 import menu from '../content/menu.json'
 import gallery from '../content/gallery.json'
-import { siteConfig, navLinks, weeklySpecials } from '../data/site'
+import links from '../content/links.json'
+import features from '../content/features.json'
+import hero from '../content/hero.json'
+import rating from '../content/rating.json'
+import { navLinks, weeklySpecials } from '../data/site'
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={siteConfig.description} />
+    <meta name="description" content={`${business.name} — ${business.tagline}`} />
     <title>{business.name} — {business.tagline}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,16 +35,16 @@ import { siteConfig, navLinks, weeklySpecials } from '../data/site'
     <!-- Hero -->
     <section class="hero">
       <div class="hero-image">
-        <img src="/images/ig-4.jpg" alt="Custom Cafe outdoor area with friends" />
+        <img src={hero.image} alt={hero.imageAlt} />
       </div>
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <div class="hero-badge">Brookvale's Local Since 2024</div>
-        <h1>Custom Cafe</h1>
-        <p class="hero-tagline">{business.tagline}</p>
+        <div class="hero-badge">{hero.badge}</div>
+        <h1>{business.name}</h1>
+        <p class="hero-tagline">{hero.tagline}</p>
         <p class="hero-sub">
-          <a href={siteConfig.links.googleMaps} target="_blank" rel="noopener">{siteConfig.address.full}</a>
-          &middot; {siteConfig.hours.short}
+          <a href={links.googleMaps} target="_blank" rel="noopener">{business.address.street}, {business.address.suburb}</a>
+          &middot; {business.hours.weekdayTime}
         </p>
         <div class="hero-actions">
           <a href="#menu" class="btn-primary">See Menu</a>
@@ -75,13 +79,13 @@ import { siteConfig, navLinks, weeklySpecials } from '../data/site'
           <h2>Good food.<br />No fuss.</h2>
           {business.about.paragraphs.map((p) => <p class="body-text">{p}</p>)}
           <div class="features-row">
-            {siteConfig.features.map((f) => <span class="tag">{f}</span>)}
+            {features.features.map((f) => <span class="tag">{f}</span>)}
           </div>
-          <a href={siteConfig.rating.url} target="_blank" rel="noopener" class="rating-badge">
-            <span class="rating-score">{siteConfig.rating.score}</span>
+          <a href={rating.url} target="_blank" rel="noopener" class="rating-badge">
+            <span class="rating-score">{rating.score}</span>
             <div>
               <span class="rating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span class="rating-meta">{siteConfig.rating.reviews} reviews on {siteConfig.rating.source}</span>
+              <span class="rating-meta">{rating.reviews} reviews on {rating.source}</span>
             </div>
           </a>
         </div>
@@ -134,9 +138,9 @@ import { siteConfig, navLinks, weeklySpecials } from '../data/site'
         <p class="section-label center">Hungry?</p>
         <h2 class="center">Order Now</h2>
         <div class="order-btns">
-          <a href={siteConfig.links.ubereats} target="_blank" rel="noopener" class="order-btn uber">Uber Eats</a>
-          <a href={siteConfig.links.doordash} target="_blank" rel="noopener" class="order-btn doordash">DoorDash</a>
-          <a href={siteConfig.phoneHref} class="order-btn phone">Call for Pickup</a>
+          <a href={links.ubereats} target="_blank" rel="noopener" class="order-btn uber">Uber Eats</a>
+          <a href={links.doordash} target="_blank" rel="noopener" class="order-btn doordash">DoorDash</a>
+          <a href={`tel:${business.phone.replace(/\s/g, '')}`} class="order-btn phone">Call for Pickup</a>
         </div>
       </div>
     </section>
@@ -149,7 +153,7 @@ import { siteConfig, navLinks, weeklySpecials } from '../data/site'
           <h2>Come Hang</h2>
           <div class="visit-detail">
             <h4>Address</h4>
-            <p><a href={siteConfig.links.googleMaps} target="_blank" rel="noopener">{business.address.street}<br />{business.address.suburb}</a></p>
+            <p><a href={links.googleMaps} target="_blank" rel="noopener">{business.address.street}<br />{business.address.suburb}</a></p>
           </div>
           <div class="visit-detail">
             <h4>Hours</h4>
@@ -157,7 +161,7 @@ import { siteConfig, navLinks, weeklySpecials } from '../data/site'
           </div>
           <div class="visit-detail">
             <h4>Phone</h4>
-            <p><a href={siteConfig.phoneHref}>{business.phone}</a></p>
+            <p><a href={`tel:${business.phone.replace(/\s/g, '')}`}>{business.phone}</a></p>
           </div>
           <div class="visit-detail">
             <h4>Email</h4>
@@ -166,17 +170,17 @@ import { siteConfig, navLinks, weeklySpecials } from '../data/site'
           <div class="visit-detail">
             <h4>Follow</h4>
             <div class="socials">
-              <a href={siteConfig.links.instagram} target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <a href={links.instagram} target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
-              <a href={siteConfig.links.facebook} target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+              <a href={links.facebook} target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
               </a>
             </div>
           </div>
         </div>
         <div class="visit-map">
-          <iframe src={siteConfig.links.mapsEmbed} width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src={links.mapsEmbed} width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </section>

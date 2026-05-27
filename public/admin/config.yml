@@ -9,8 +9,8 @@ media_folder: public/images
 public_folder: /images
 
 collections:
-  - name: settings
-    label: Settings
+  - name: content
+    label: Content
     editor:
       preview: false
     files:
@@ -18,7 +18,7 @@ collections:
         label: Business Info
         file: src/content/business.json
         fields:
-          - { label: Name, name: name, widget: string }
+          - { label: Business Name, name: name, widget: string }
           - { label: Tagline, name: tagline, widget: string }
           - { label: Phone, name: phone, widget: string, required: false }
           - { label: Email, name: email, widget: string, required: false }
@@ -36,7 +36,7 @@ collections:
               - { label: Weekday Time, name: weekdayTime, widget: string }
               - { label: Weekends, name: weekends, widget: string }
               - { label: Weekend Time, name: weekendTime, widget: string }
-          - label: About
+          - label: About Section
             name: about
             widget: object
             fields:
@@ -49,15 +49,74 @@ collections:
         label: Menu
         file: src/content/menu.json
         fields:
-          - label: Categories
+          - label: Menu Categories
             name: categories
             widget: list
             fields:
-              - { label: Title, name: title, widget: string }
+              - { label: Category Name, name: title, widget: string }
               - label: Items
                 name: items
                 widget: list
                 fields:
-                  - { label: Name, name: name, widget: string }
+                  - { label: Dish Name, name: name, widget: string }
                   - { label: Description, name: desc, widget: string }
                   - { label: Price, name: price, widget: string }
+
+      - name: gallery
+        label: Gallery
+        file: src/content/gallery.json
+        fields:
+          - label: Gallery Images
+            name: images
+            widget: list
+            fields:
+              - { label: Image, name: src, widget: image }
+              - { label: Caption, name: alt, widget: string }
+              - label: Layout Size
+                name: size
+                widget: select
+                required: false
+                default: ""
+                options:
+                  - { label: Normal, value: "" }
+                  - { label: Tall (2 rows), value: "tall" }
+                  - { label: Wide (2 columns), value: "wide" }
+
+      - name: links
+        label: Links & Social
+        file: src/content/links.json
+        fields:
+          - { label: Instagram URL, name: instagram, widget: string, required: false }
+          - { label: Instagram Handle, name: instagramHandle, widget: string, required: false }
+          - { label: Facebook URL, name: facebook, widget: string, required: false }
+          - { label: Google Maps URL, name: googleMaps, widget: string, required: false }
+          - { label: Uber Eats URL, name: ubereats, widget: string, required: false }
+          - { label: DoorDash URL, name: doordash, widget: string, required: false }
+          - { label: Google Maps Embed URL, name: mapsEmbed, widget: string, required: false }
+
+      - name: features
+        label: Features & Tags
+        file: src/content/features.json
+        fields:
+          - label: Feature Tags
+            name: features
+            widget: list
+            field: { label: Feature, name: feature, widget: string }
+
+      - name: hero
+        label: Hero Section
+        file: src/content/hero.json
+        fields:
+          - { label: Hero Image, name: image, widget: image }
+          - { label: Hero Image Alt, name: imageAlt, widget: string }
+          - { label: Badge Text, name: badge, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+
+      - name: rating
+        label: Reviews & Rating
+        file: src/content/rating.json
+        fields:
+          - { label: Score, name: score, widget: string }
+          - { label: Number of Reviews, name: reviews, widget: number }
+          - { label: Source (e.g. Google), name: source, widget: string }
+          - { label: Reviews URL, name: url, widget: string }
