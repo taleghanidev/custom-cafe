@@ -1,0 +1,22 @@
+{
+  "name": "Custom Cafe",
+  "tagline": "Coffee · Breakfast · Lunch",
+  "phone": "0451 942 100",
+  "email": "custom.cafe.brookvale@gmail.com",
+  "address": {
+    "street": "17 Sydenham Rd",
+    "suburb": "Brookvale NSW 2100"
+  },
+  "hours": {
+    "weekdays": "Monday – Friday",
+    "weekdayTime": "6:00am – 3:00pm",
+    "weekends": "Saturday – Sunday",
+    "weekendTime": "Closed"
+  },
+  "about": {
+    "paragraphs": [
+      "Custom Cafe is Brookvale's go-to for hearty breakfasts, specialty coffee, and proper good food. Tucked away on Sydenham Rd in the industrial heart of Brookvale, we're the kind of place where tradies, surfers, and families all feel at home.",
+      "From our famous acai bowls loaded with fresh fruit to our stacked burgers and Korean beef wraps — everything is made fresh, served fast, and priced right. Coffee is roasted by Danes, pulled with care."
+    ]
+  }
+}

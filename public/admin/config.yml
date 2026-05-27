@@ -1,0 +1,63 @@
+backend:
+  name: github
+  repo: taleghanidev/custom-cafe
+  branch: main
+  base_url: https://customcafe.ibel.ai
+  auth_endpoint: /api/auth
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: settings
+    label: Settings
+    editor:
+      preview: false
+    files:
+      - name: business
+        label: Business Info
+        file: src/content/business.json
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Phone, name: phone, widget: string, required: false }
+          - { label: Email, name: email, widget: string, required: false }
+          - label: Address
+            name: address
+            widget: object
+            fields:
+              - { label: Street, name: street, widget: string }
+              - { label: Suburb, name: suburb, widget: string }
+          - label: Hours
+            name: hours
+            widget: object
+            fields:
+              - { label: Weekdays, name: weekdays, widget: string }
+              - { label: Weekday Time, name: weekdayTime, widget: string }
+              - { label: Weekends, name: weekends, widget: string }
+              - { label: Weekend Time, name: weekendTime, widget: string }
+          - label: About
+            name: about
+            widget: object
+            fields:
+              - label: Paragraphs
+                name: paragraphs
+                widget: list
+                field: { label: Paragraph, name: paragraph, widget: text }
+
+      - name: menu
+        label: Menu
+        file: src/content/menu.json
+        fields:
+          - label: Categories
+            name: categories
+            widget: list
+            fields:
+              - { label: Title, name: title, widget: string }
+              - label: Items
+                name: items
+                widget: list
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Description, name: desc, widget: string }
+                  - { label: Price, name: price, widget: string }
