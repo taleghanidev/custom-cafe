@@ -2,7 +2,7 @@ backend:
   name: github
   repo: taleghanidev/custom-cafe
   branch: main
-  base_url: https://ibel.ai
+  base_url: https://customcafe.ibel.ai
   auth_endpoint: /api/auth
 
 media_folder: public/images
